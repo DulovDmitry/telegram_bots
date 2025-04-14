@@ -194,7 +194,7 @@ async def send_new_article_to_users():
 
 	logging.info(f"There is {number_of_new_articles} new article(s)")
 
-	for article in unsent_articles:
+	for i, article in enumerate(unsent_articles):
 		# Create message to be sent
 		message = "<b>" + article[0] + "</b>\n\n"		# add title
 		message += "<i>" + article[1] + "</i>\n\n"		# add authors
@@ -216,6 +216,10 @@ async def send_new_article_to_users():
 				number_of_new_articles -= 1
 
 		database.article_was_sent(article[3])
+
+		# Telegram has messages per minute limit = 20. If there are too many unsent articles, they should be send partially
+		if (i+1)%19 == 0:
+			await asyncio.sleep(65)
 
 	print(datetime.now(), f"All new articles ({number_of_new_articles}) has been sent") # to all users ({number_of_users})")
 	logging.info(f"All new articles ({number_of_new_articles}) has been sent") # to all users ({number_of_users})")
