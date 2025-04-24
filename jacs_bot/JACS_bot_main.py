@@ -46,8 +46,8 @@ async def send_welcome(message: types.Message):
     print(database.get_all_user_ids())
     print(user_id)
     print(user_name)
-    await bot.send_message(user_id, "Hi there!\n\nI’m the JASC Bot, your helper for staying updated with the latest research. I automatically send new ASAP articles from the Journal of the American Chemical Society (JACS) to this Telegram channel: JACS Articles.\n\nIf you want the newest publications delivered straight to you, just subscribe!")
-    await bot.send_message(user_id, "Send /help to see the list of avaliable commands")
+    await bot.send_message(user_id, "Hi there!\n\nI’m the JACS Bot, your helper for staying updated with the latest research. I send new ASAP articles from the Journal of the American Chemical Society (JACS) to this Telegram channel: <a href=\"https://t.me/jacs_asap\">JACS ASAP</a>.\n\nIf you want the newest publications delivered straight to you, just subscribe!", parse_mode='html')
+#    await bot.send_message(user_id, "Send /help to see the list of avaliable commands")
 
 
 @dp.message(Command("help"))

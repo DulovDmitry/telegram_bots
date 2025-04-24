@@ -42,8 +42,8 @@ async def send_welcome(message: types.Message):
     print(database.get_all_user_ids())
     print(user_id)
     print(user_name)
-    await bot.send_message(user_id, "Hi! I'm OrgLett bot!\nI will send you ASAP articles from Organic Letters")
-    await bot.send_message(user_id, "Send /help to see the list of avaliable commands")
+    await bot.send_message(user_id, "Hi there!\n\nI’m the OrgLett Bot, your helper for staying updated with the latest research. I send new ASAP articles from the Organic Letters (OrgLett) to this Telegram channel: <a href=\"https://t.me/orglett_asap\">Organic Letters ASAP</a>.\n\nIf you want the newest publications delivered straight to you, just subscribe!", parse_mode='html')
+#    await bot.send_message(user_id, "Send /help to see the list of avaliable commands")
 
 
 @dp.message(Command("help"))
